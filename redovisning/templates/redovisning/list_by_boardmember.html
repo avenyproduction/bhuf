@@ -1,0 +1,91 @@
+{% extends "redovisning/base_site.html" %}
+
+{% block title %} Redovisning {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Lista styrelsen</h3>
+        <h3><a href="{% url 'redovisning:addboardmember'%}" class="btn btn-primary btn-lg btn-block btn-huge">Lägg till förtroendevald</a></h3>
+      </div>
+
+
+      <div class="clearfix"></div>
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Lista medlemmar</h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+
+
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Namn</th>
+                    <th>Efternamn</th>
+                    <th>Födelsedatum</th>
+                    <th>Kön</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for object in boardmember_list %}
+                  <tr>
+                    <th scope="row"><a href="{% url 'redovisning:editboardmember' object.board_member_id %}">{{ object.member_name }}</a></th>
+                    <td><a href="{% url 'redovisning:editboardmember' object.board_member_id %}">{{ object.post }}</a></td>
+                    <td><a href="{% url 'redovisning:editboardmember' object.board_member_id %}">{{ object.date_of_birth }}</a></td>
+                    <td><a href="{% url 'redovisning:editboardmember' object.board_member_id %}">{{ object.gender }}</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+{% endblock javascripts %}

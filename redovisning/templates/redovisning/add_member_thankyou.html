@@ -1,0 +1,95 @@
+{% extends "redovisning/base_site.html" %}
+
+{% block title %} Redovisning {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Lägg till medlem</h3>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="clearfix"></div>
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Projekt</h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Projektnamn</th>
+                    <th>Er referens</th>
+                    <th>Vår referens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for object in member_list %}
+                  <tr>
+                    <th scope="row"><a href="{% url 'project:projecteditview' object.project_id %}">{{ object.first_name }}</a></th>
+                    <td><a href="{% url 'project:projecteditview' object.project_id %}">{{ object.project_name }}</a></td>
+                    <td><a href="{% url 'project:projecteditview' object.project_id %}">{{ object.your_ref_person_name }}</a></td>
+                    <td><a href="{% url 'project:projecteditview' object.project_id %}">{{ object.our_ref_person_name }}</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+{% endblock javascripts %}
