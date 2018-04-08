@@ -5,7 +5,8 @@ from redovisning.models import Organization,Boardmember,Contact,Meeeting,Member,
 class AddMemberForm(forms.ModelForm):
     first_name = forms.CharField(label='Förnamn/Ime')
     last_name = forms.CharField(label='Efternamn/Prezime')
-    date_of_birth = forms.CharField(label='Födelsedag/Datum rodjenja (yyyy-mm-dd)')
+    #date_of_birth = forms.CharField(label='Födelsedag/Datum rodjenja (yyyy-mm-dd)')
+    year_of_birth = forms.CharField(label='Födelseår/Godiste (npr 2001)')
     phone = forms.CharField(label='Telefon')
     address = forms.CharField(label='Adress/Adresa')
     gender = forms.ChoiceField(label='Kön/Pol',choices=(('M','Man'),
@@ -68,7 +69,8 @@ class AddAttestationForm(forms.ModelForm):
 class EditMemberForm(forms.ModelForm):
     first_name = forms.CharField(label='Förnamn/Ime')
     last_name = forms.CharField(label='Efternamn/Prezime')
-    date_of_birth = forms.CharField(label='Födelsedag/Datum rodjenja (yyyy-mm-dd)')
+    #date_of_birth = forms.CharField(label='Födelsedag/Datum rodjenja (yyyy-mm-dd)')
+    year_of_birth = forms.CharField(label='Födelseår/Godiste (npr 2001)')
     phone = forms.CharField(label='Telefon')
     address = forms.CharField(label='Adress/Adresa')
     gender = forms.ChoiceField(label='Kön/Pol',choices=(('M','Man'),('K','Kvinna'),))
