@@ -81,7 +81,7 @@ class Member(models.Model):
     last_name = models.CharField(max_length=200)
     #date_of_birth = models.DateField()
     year_of_birth = models.CharField(max_length=5)
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
     phone = models.CharField(max_length=64)
     address = models.TextField()
     gender = models.CharField(max_length=16)
