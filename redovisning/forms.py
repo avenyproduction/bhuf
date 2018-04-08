@@ -63,6 +63,11 @@ class AddMeetingForm(forms.ModelForm):
         model = Meeeting
         exclude = ['org_id']
 
+    def __init__(self, *args, **kwargs):
+        super(AddMeetingForm, self).__init__(*args, **kwargs)
+        self.fields['statutes_not_attached'].required = False
+        self.fields['current_statuses_attached'].required = False
+
 class AddAttestationForm(forms.ModelForm):
     printed_name = forms.CharField(label='Attesteras av/Potpisnik')
     date_signed = forms.DateField(label='Datum för attest/Datum potpisivanja')
