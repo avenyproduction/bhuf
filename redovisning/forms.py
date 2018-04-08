@@ -67,6 +67,8 @@ class AddMeetingForm(forms.ModelForm):
         super(AddMeetingForm, self).__init__(*args, **kwargs)
         self.fields['statutes_not_attached'].required = False
         self.fields['current_statuses_attached'].required = False
+        self.fields['collaboration_with_others'].required = False
+        self.fields['bhuf_activity'].required = False
 
 class AddAttestationForm(forms.ModelForm):
     printed_name = forms.CharField(label='Attesteras av/Potpisnik')
