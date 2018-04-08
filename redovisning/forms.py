@@ -19,6 +19,10 @@ class AddMemberForm(forms.ModelForm):
         model = Member
         exclude = ['org_id']
 
+    def __init__(self, *args, **kwargs):
+        super(AddMemberForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = False
+
 
 class AddOrganizationForm(forms.ModelForm):
     class Meta:
@@ -80,6 +84,10 @@ class EditMemberForm(forms.ModelForm):
     class Meta:
         model = Member
         exclude = ['org_id']
+
+    def __init__(self, *args, **kwargs):
+        super(EditMemberForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = False
 
 class EditMeetingForm(forms.ModelForm):
     no_of_meetings = forms.CharField(label='Antal styrelsemöten under verksamhetsåret/Broj sastanaka upravnog odbora u toku godine')
