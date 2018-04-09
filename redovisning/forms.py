@@ -110,7 +110,7 @@ class EditMeetingForm(forms.ModelForm):
         exclude = ['org_id']
 
     def __init__(self, *args, **kwargs):
-        super(AddMeetingForm, self).__init__(*args, **kwargs)
+        super(EditMeetingForm, self).__init__(*args, **kwargs)
         self.fields['statutes_not_attached'].required = False
         self.fields['current_statuses_attached'].required = False
         self.fields['collaboration_with_others'].required = False
