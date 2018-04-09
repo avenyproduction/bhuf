@@ -109,6 +109,13 @@ class EditMeetingForm(forms.ModelForm):
         model = Meeeting
         exclude = ['org_id']
 
+    def __init__(self, *args, **kwargs):
+        super(AddMeetingForm, self).__init__(*args, **kwargs)
+        self.fields['statutes_not_attached'].required = False
+        self.fields['current_statuses_attached'].required = False
+        self.fields['collaboration_with_others'].required = False
+        self.fields['bhuf_activity'].required = False
+
 class EditBoardmemberForm(forms.ModelForm):
     member_name = forms.CharField(label='Namn/Ime i prezime')
     post = forms.CharField(label='Vald till/Izabran za')
