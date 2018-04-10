@@ -53,19 +53,23 @@ class AddContactForm(forms.ModelForm):
 class AddMeetingForm(forms.ModelForm):
     no_of_meetings = forms.CharField(label='Antal styrelsemöten under verksamhetsåret/Broj sastanaka upravnog odbora u toku godine')
     annual_meeting_date = forms.CharField(label='Datum då årsmötet hölls/Datum odrzavanja godisnje skupstine')
-    current_statuses_attached = forms.BooleanField(label='Vi bifogar föreningens/sektionens gällande stadgar/Poslacemo vazeci statut za udruzenje/sekciju')
-    statutes_not_attached = forms.BooleanField(label='Stadgarna bifogas ej, då dessa ej ändrats av årsmötet (vid ändring måste stadgarna bifogas)')
+    current_statuses_attached = forms.ChoiceField(choices = ((True, 'Vi bifogar föreningens/sektionens gällande stadgar/Poslacemo vazeci statut za udruzenje/sekciju'),
+                                                            (False, 'Stadgarna bifogas ej, då dessa ej ändrats av årsmötet (vid ändring måste stadgarna bifogas)')),
+                                                            label="Välj",
+                                                            initial='', widget=forms.Select(), required=True)
+    #current_statuses_attached = forms.BooleanField(label='Vi bifogar föreningens/sektionens gällande stadgar/Poslacemo vazeci statut za udruzenje/sekciju')
+    #statutes_not_attached = forms.BooleanField(label='Stadgarna bifogas ej, då dessa ej ändrats av årsmötet (vid ändring måste stadgarna bifogas)')
     activity = forms.CharField(label='Bedriven verksamhet/Djelatnost u toku godine', widget=forms.Textarea())
     collaboration_with_others = forms.BooleanField(label='Föreningen/sektionen har samarbetat med andra föreningar/sektioner i sin verksamhet/Udruzenje/sekcija je saradjivalo sa drugim udruzenjima/sekcijama')
     bhuf_activity = forms.BooleanField(label='Föreningens/sektionens medlemmar ha deltagit i aktiviteter anordnade av BHUF/Udruzenje/sekcija je ucestvovalo u BHUF aktivnostima')
     year = forms.CharField(label='År/Godina')
     class Meta:
         model = Meeeting
-        exclude = ['org_id']
+        exclude = ['org_id','statutes_not_attached']
 
     def __init__(self, *args, **kwargs):
         super(AddMeetingForm, self).__init__(*args, **kwargs)
-        self.fields['statutes_not_attached'].required = False
+        #self.fields['statutes_not_attached'].required = False
         self.fields['current_statuses_attached'].required = False
         self.fields['collaboration_with_others'].required = False
         self.fields['bhuf_activity'].required = False
@@ -99,19 +103,23 @@ class EditMemberForm(forms.ModelForm):
 class EditMeetingForm(forms.ModelForm):
     no_of_meetings = forms.CharField(label='Antal styrelsemöten under verksamhetsåret/Broj sastanaka upravnog odbora u toku godine')
     annual_meeting_date = forms.CharField(label='Datum då årsmötet hölls/Datum odrzavanja godisnje skupstine')
-    current_statuses_attached = forms.BooleanField(label='Vi bifogar föreningens/sektionens gällande stadgar/Poslacemo vazeci statut za udruzenje/sekciju')
-    statutes_not_attached = forms.BooleanField(label='Stadgarna bifogas ej, då dessa ej ändrats av årsmötet (vid ändring måste stadgarna bifogas)')
+    current_statuses_attached = forms.ChoiceField(choices = ((True, 'Vi bifogar föreningens/sektionens gällande stadgar/Poslacemo vazeci statut za udruzenje/sekciju'),
+                                                            (False, 'Stadgarna bifogas ej, då dessa ej ändrats av årsmötet (vid ändring måste stadgarna bifogas)')),
+                                                            label="Välj",
+                                                            initial='', widget=forms.Select(), required=True)
+    #current_statuses_attached = forms.BooleanField(label='Vi bifogar föreningens/sektionens gällande stadgar/Poslacemo vazeci statut za udruzenje/sekciju')
+    #statutes_not_attached = forms.BooleanField(label='Stadgarna bifogas ej, då dessa ej ändrats av årsmötet (vid ändring måste stadgarna bifogas)')
     activity = forms.CharField(label='Bedriven verksamhet/Djelatnost u toku godine', widget=forms.Textarea())
     collaboration_with_others = forms.BooleanField(label='Föreningen/sektionen har samarbetat med andra föreningar/sektioner i sin verksamhet/Udruzenje/sekcija je saradjivalo sa drugim udruzenjima/sekcijama')
     bhuf_activity = forms.BooleanField(label='Föreningens/sektionens medlemmar ha deltagit i aktiviteter anordnade av BHUF/Udruzenje/sekcija je ucestvovalo u BHUF aktivnostima')
     year = forms.CharField(label='År/Godina')
     class Meta:
         model = Meeeting
-        exclude = ['org_id']
+        exclude = ['org_id','statutes_not_attached']
 
     def __init__(self, *args, **kwargs):
         super(EditMeetingForm, self).__init__(*args, **kwargs)
-        self.fields['statutes_not_attached'].required = False
+        #self.fields['statutes_not_attached'].required = False
         self.fields['current_statuses_attached'].required = False
         self.fields['collaboration_with_others'].required = False
         self.fields['bhuf_activity'].required = False
