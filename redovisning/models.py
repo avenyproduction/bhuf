@@ -60,7 +60,8 @@ class Meeeting(models.Model):
     current_statuses_attached = models.BooleanField()
     #Stadgarna bifogas ej, då dessa ej ändrats av årsmötet
     #(vid ändring måste stadgar bifogas)
-    statutes_not_attached = models.BooleanField()
+    #statutes_not_attached = models.BooleanField()
+
     #bedriven verksamhet
     activity = models.TextField()
     #Har föreningen/sektionen samarbetar med andra förening/sektioner i sin verksamhet
